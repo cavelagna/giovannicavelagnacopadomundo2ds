@@ -487,6 +487,44 @@ function gerarCardsGaleria() {
   });
 }
 
+const imagensHistoricas = {
+  1930: [
+    "https://upload.wikimedia.org/wikipedia/commons/b/bd/Uruguay_and_Argentina_enter_the_field_1930_World_Cup_final.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/e/ec/Uruguay_1930_World_Cup_Champion.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/e/ec/Uruguay_1930_World_Cup_Champion.jpg"
+  ],
+
+  1950: [
+    "https://upload.wikimedia.org/wikipedia/commons/d/da/Gol_de_Ghiggia_-_Maracanazo.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/da/Gol_de_Ghiggia_-_Maracanazo.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/da/Gol_de_Ghiggia_-_Maracanazo.jpg"
+  ],
+
+  1958: [
+    "https://upload.wikimedia.org/wikipedia/commons/4/4e/Pel%C3%A9_1958.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/4/4e/Pel%C3%A9_1958.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/4/4e/Pel%C3%A9_1958.jpg"
+  ],
+
+  1970: [
+    "https://upload.wikimedia.org/wikipedia/commons/6/69/Pel%C3%A9_celebrando_M%C3%A9xico_1970.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/6/69/Pel%C3%A9_celebrando_M%C3%A9xico_1970.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/6/69/Pel%C3%A9_celebrando_M%C3%A9xico_1970.jpg"
+  ],
+
+  1994: [
+    "https://upload.wikimedia.org/wikipedia/commons/7/77/Baggio_World_Cup_1994.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/7/77/Baggio_World_Cup_1994.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/7/77/Baggio_World_Cup_1994.jpg"
+  ],
+
+  2022: [
+    "https://upload.wikimedia.org/wikipedia/commons/b/b4/Lionel_Messi_with_the_World_Cup_trophy.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/b/b4/Lionel_Messi_with_the_World_Cup_trophy.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/b/b4/Lionel_Messi_with_the_World_Cup_trophy.jpg"
+  ]
+};
+
 /* Ao clicar em "Ver detalhes", popula o template e exibe a página da edição */
 function abrirPaginaDetalhes(copa) {
   // Reseta classe de temas de cores anteriores no contêiner principal
@@ -528,9 +566,15 @@ function abrirPaginaDetalhes(copa) {
   const img2 = document.getElementById("details-img-2");
   const img3 = document.getElementById("details-img-3");
   
-  img1.src = `img/copas/${copa.ano}-1.jpg`; // Caminho local foto 1
-  img2.src = `img/copas/${copa.ano}-2.jpg`; // Caminho local foto 2
-  img3.src = `img/copas/${copa.ano}-3.jpg`; // Caminho local foto 3
+  if (imagensHistoricas[copa.ano]) {
+  img1.src = imagensHistoricas[copa.ano][0];
+  img2.src = imagensHistoricas[copa.ano][1];
+  img3.src = imagensHistoricas[copa.ano][2];
+} else {
+  img1.src = `img/copas/${copa.ano}-1.jpg`;
+  img2.src = `img/copas/${copa.ano}-2.jpg`;
+  img3.src = `img/copas/${copa.ano}-3.jpg`;
+}
   
   // Preenche as legendas correspondentes de cada imagem
   document.getElementById("details-desc-1").innerText = copa.fotosLegendas[0];
