@@ -130,8 +130,8 @@ img {
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--color-gold);
-  background-color: rgba(255, 215, 0, 0.1);
+  color: #FFD700;
+  background-color: black; /* Azul escuro com 20% de opacidade */
   padding: 6px 16px;
   border-radius: 50px;
   margin-bottom: 12px;
@@ -340,7 +340,7 @@ img {
   position: relative;
   height: 500px;
   background-color: var(--color-primary);
-  background-image: url('img/geral/trofeu-copa.jpg');
+  background-image: url('img/copas/entrando1930fotoinicio.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
