@@ -431,7 +431,12 @@ const bandeirasLocais = {
   "Inglaterra": "img/bandeiras/gb-eng.png",
   "Argentina": "img/bandeiras/ar.png",
   "França": "img/bandeiras/fr.png",
-  "Espanha": "img/bandeiras/es.png"
+  "Espanha": "img/bandeiras/es.png",
+  "Tchecoslováquia": "img/bandeiras/cz.png",
+  "Hungria": "img/bandeiras/hu.png",
+  "Suécia": "img/bandeiras/se.png",
+  "Países Baixos": "img/bandeiras/nl.png",
+  "Croácia": "img/bandeiras/hr.png"
 };
 
 function obterFonteBandeira(pais) {
