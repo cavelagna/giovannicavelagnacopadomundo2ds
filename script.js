@@ -422,6 +422,7 @@ const paisesIso = {
   "Croácia": "hr"
 };
 
+/*O DOM (Document Object Model) é a representação estruturada do código HTML de uma página web em forma de árvore*/
 /* Elementos do DOM: Captura as referências de contêineres e botões do HTML */
 const copasGallery = document.getElementById("copas-gallery"); // Grade de cards
 const homeView = document.getElementById("home-view"); // Bloco principal do site
