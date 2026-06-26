@@ -422,6 +422,27 @@ const paisesIso = {
   "Croácia": "hr"
 };
 
+const bandeirasLocais = {
+  "Uruguai": "img/bandeiras/uy.png",
+  "Itália": "img/bandeiras/it.png",
+  "Alemanha Ocidental": "img/bandeiras/de.png",
+  "Alemanha": "img/bandeiras/de.png",
+  "Brasil": "img/bandeiras/br.png",
+  "Inglaterra": "img/bandeiras/gb-eng.png",
+  "Argentina": "img/bandeiras/ar.png",
+  "França": "img/bandeiras/fr.png",
+  "Espanha": "img/bandeiras/es.png"
+};
+
+function obterFonteBandeira(pais) {
+  if (bandeirasLocais[pais]) {
+    return bandeirasLocais[pais];
+  }
+
+  const iso = paisesIso[pais] || "br";
+  return `https://flagcdn.com/w320/${iso}.png`;
+}
+
 /*O DOM (Document Object Model) é a representação estruturada do código HTML de uma página web em forma de árvore*/
 /* Elementos do DOM: Captura as referências de contêineres e botões do HTML */
 const copasGallery = document.getElementById("copas-gallery"); // Grade de cards
@@ -437,12 +458,9 @@ function gerarCardsGaleria() {
   copasGallery.innerHTML = ""; // Limpa qualquer conteúdo antigo
   
   copasDados.forEach(copa => {
-    // Busca código ISO ou define 'br' se falhar
-    const isoCampeao = paisesIso[copa.campeao] || "br";
-    // Gera URL da bandeira do campeão via CDN
-    const flagUrl = `https://flagcdn.com/w320/${isoCampeao}.png`;
-    // Define caminho relativo para a bandeira local
-    const localFlagUrl = `img/bandeiras/bandeira-${copa.campeao.toLowerCase().replace(" ocidental", "")}.png`;
+    // Usa a bandeira local da pasta img/bandeiras quando disponível;
+    // se não houver, cai para a imagem via CDN.
+    const flagUrl = obterFonteBandeira(copa.campeao);
     
     // Cria elemento wrapper do card
     const card = document.createElement("div");
@@ -452,8 +470,8 @@ function gerarCardsGaleria() {
     // Insere o HTML interno do card contendo imagem, ano, sede, campeão e botão
     card.innerHTML = `
       <div class="card-header-flag">
-        <img class="card-flag-bg" src="${flagUrl}" alt="" aria-hidden="true" onerror="this.src='${localFlagUrl}'">
-        <img class="card-flag-main" src="${flagUrl}" alt="Bandeira do ${copa.campeao}" onerror="this.src='${localFlagUrl}'">
+        <img class="card-flag-bg" src="${flagUrl}" alt="" aria-hidden="true">
+        <img class="card-flag-main" src="${flagUrl}" alt="Bandeira do ${copa.campeao}">
         <span class="card-year-badge">${copa.ano}</span>
       </div>
       <div class="card-body">
@@ -544,23 +562,13 @@ function abrirPaginaDetalhes(copa) {
   document.getElementById("details-vermelhos").innerText = copa.cartoesVermelhos;
   document.getElementById("details-description").innerText = copa.descricao;
   
-  // Busca códigos ISO para as bandeiras de campeão e vice
-  const isoChamp = paisesIso[copa.campeao] || "br";
-  const isoVice = paisesIso[copa.vice] || "ar";
-  
-  // Carrega bandeira do campeão com redirecionamento de erro local
+  // Carrega bandeira do campeão usando primeiro a imagem local da pasta img/bandeiras
   const champFlagImg = document.getElementById("details-champ-flag");
-  champFlagImg.src = `https://flagcdn.com/w320/${isoChamp}.png`;
-  champFlagImg.onerror = () => {
-    champFlagImg.src = `img/bandeiras/bandeira-${copa.campeao.toLowerCase().replace(" ocidental", "")}.png`;
-  };
+  champFlagImg.src = obterFonteBandeira(copa.campeao);
   
-  // Carrega bandeira do vice com redirecionamento de erro local
+  // Carrega bandeira do vice usando primeiro a imagem local da pasta img/bandeiras
   const viceFlagImg = document.getElementById("details-vice-flag");
-  viceFlagImg.src = `https://flagcdn.com/w320/${isoVice}.png`;
-  viceFlagImg.onerror = () => {
-    viceFlagImg.src = `img/bandeiras/bandeira-${copa.vice.toLowerCase().replace(" ocidental", "")}.png`;
-  };
+  viceFlagImg.src = obterFonteBandeira(copa.vice);
   
   // Mapeia os caminhos locais para as 3 fotos da galeria de detalhes
   const img1 = document.getElementById("details-img-1");
