@@ -526,41 +526,160 @@ function gerarCardsGaleria() {
   });
 }
 
+// Objeto contendo os caminhos locais para as 3 imagens de cada uma das 22 Copas
 const imagensHistoricas = {
+  // Imagens da Copa de 1930 no Uruguai
   1930: [
-    "img/copas/entrando1930fotoinicio.jpg",
-    "img/copas/Uruguay_en_el_Mundial_1930,_Los_Sports,_1930-08-08_(387).jpg",
-    "img/copas/images.jpeg"
+    "img/copas/entrando1930fotoinicio.jpg", // Foto 1: Entrada dos times
+    "img/copas/Uruguay_en_el_Mundial_1930,_Los_Sports,_1930-08-08_(387).jpg", // Foto 2: Jogadores do Uruguai
+    "img/copas/images.jpeg" // Foto 3: Guillermo Stábile / Seleção
   ],
 
+  // Imagens da Copa de 1934 na Itália
+  1934: [
+    "img/copas/1934ItaliaCampeao.jpg", // Foto 1: Seleção Italiana Campeã
+    "img/copas/entregandoTrofeu194.jpg", // Foto 2: Entrega do Troféu
+    "img/copas/artilheiro1934.jpg" // Foto 3: Oldřich Nejedlý
+  ],
+
+  // Imagens da Copa de 1938 na França
+  1938: [
+    "img/copas/artilheiro1938Leonidas.jpg", // Foto 1: Leônidas da Silva
+    "img/copas/italiaCampeaTrofeu138.webp", // Foto 2: Itália bicampeã com a taça
+    "img/copas/PartidaCopa1938NaFranca.jpg" // Foto 3: Partida da Copa na França
+  ],
+
+  // Imagens da Copa de 1950 no Brasil
   1950: [
-    "img/copas/entrando1930fotoinicio.jpg",
-    "img/copas/Uruguay_en_el_Mundial_1930,_Los_Sports,_1930-08-08_(387).jpg",
-    "img/copas/images.jpeg"
+    "img/copas/TorcedoresMaracana1950.jpg", // Foto 1: Torcedores no Maracanã
+    "img/copas/1950ArtilheiroTrofeu.jpg", // Foto 2: Obdulio Varela com a taça
+    "img/copas/ademirMenezesAtilheiro1950.jpg" // Foto 3: Ademir de Menezes
   ],
 
+  // Imagens da Copa de 1954 na Suíça
+  1954: [
+    "img/copas/alemanaOcidentalMilagreDeBerna1954.jpg", // Foto 1: Comemoração do Milagre de Berna
+    "img/copas/Sándor_Kocsis_1954_Copa_Artilheiro.jpg", // Foto 2: Sándor Kocsis
+    "img/copas/EstadioWankdorf1954.jpg" // Foto 3: Estádio Wankdorf na final
+  ],
+
+  // Imagens da Copa de 1958 na Suécia
   1958: [
-    "img/copas/entrando1930fotoinicio.jpg",
-    "img/copas/Uruguay_en_el_Mundial_1930,_Los_Sports,_1930-08-08_(387).jpg",
-    "img/copas/images.jpeg"
+    "img/copas/PeleComemorando1958.webp", // Foto 1: Pelé comemorando gol
+    "img/copas/BrasilLevantandoTaca1958.jpg", // Foto 2: Capitão Bellini com a taça
+    "img/copas/JustFontaineArtilheiro1958.jpg" // Foto 3: Just Fontaine
   ],
 
+  // Imagens da Copa de 1962 no Chile
+  1962: [
+    "img/copas/GarrinchaChile1962.jpg", // Foto 1: Garrincha em ação
+    "img/copas/BrasilTaca1962.jpg", // Foto 2: Seleção brasileira com a taça
+    "img/copas/ABatalhaSantiago1962.jpg" // Foto 3: A Batalha de Santiago
+  ],
+
+  // Imagens da Copa de 1966 na Inglaterra
+  1966: [
+    "img/copas/InglaterraComemorando1966.webp", // Foto 1: Inglaterra campeã em Wembley
+    "img/copas/EusebioEmocionadoHumilhacao1966.jpg", // Foto 2: Eusébio chorando
+    "img/copas/GeoffHusrtGolPolemico1966.jpg" // Foto 3: Gol polêmico de Geoff Hurst
+  ],
+
+  // Imagens da Copa de 1970 no México
   1970: [
-    "img/copas/entrando1930fotoinicio.jpg",
-    "img/copas/Uruguay_en_el_Mundial_1930,_Los_Sports,_1930-08-08_(387).jpg",
-    "img/copas/images.jpeg"
+    "img/copas/PeleCarlosTaca1970.jpg", // Foto 1: Pelé e Carlos Alberto com a taça
+    "img/copas/GolCarlos1970.jpg", // Foto 2: Gol icônico de Carlos Alberto Torres
+    "img/copas/GerdMullerArtilheiro1970.jpg" // Foto 3: Gerd Müller
   ],
 
+  // Imagens da Copa de 1974 na Alemanha Ocidental
+  1974: [
+    "img/copas/FranzTaca1974.jpg", // Foto 1: Franz Beckenbauer com a taça
+    "img/copas/Johan1974.jpg", // Foto 2: Johan Cruyff em ação
+    "img/copas/Gzregorz1974.jpg" // Foto 3: Grzegorz Lato
+  ],
+
+  // Imagens da Copa de 1978 na Argentina
+  1978: [
+    "img/copas/MarioGol78.jpg", // Foto 1: Mario Kempes comemorando gol
+    "img/copas/ArgentinaComemora78.jpg", // Foto 2: Argentina campeã em Buenos Aires
+    "img/copas/EstadioMonumental78.jpg" // Foto 3: Estádio Monumental na final
+  ],
+
+  // Imagens da Copa de 1982 na Espanha
+  1982: [
+    "img/copas/PaoloRossiComemorando82.webp", // Foto 1: Paolo Rossi comemorando gol
+    "img/copas/ItaliaTaca82.jpg", // Foto 2: Itália campeã com a taça
+    "img/copas/ZicoAcao82.jpg" // Foto 3: Zico em ação
+  ],
+
+  // Imagens da Copa de 1986 no México
+  1986: [
+    "img/copas/MaradonaTaca86.jpg", // Foto 1: Maradona erguendo a taça
+    "img/copas/AMaodeDeus86.jpg", // Foto 2: O gol da Mão de Deus
+    "img/copas/GolSeculo86.jpg" // Foto 3: O Gol do Século
+  ],
+
+  // Imagens da Copa de 1990 na Itália
+  1990: [
+    "img/copas/alemanhaOcidental90.jpg", // Foto 1: Alemanha Ocidental campeã
+    "img/copas/SalvatoreComemorando90.jpg", // Foto 2: Salvatore Schillaci
+    "img/copas/LotharMatthausTaca90.jpg" // Foto 3: Lothar Matthäus com a taça
+  ],
+
+  // Imagens da Copa de 1994 nos Estados Unidos
   1994: [
-    "img/copas/entrando1930fotoinicio.jpg",
-    "img/copas/Uruguay_en_el_Mundial_1930,_Los_Sports,_1930-08-08_(387).jpg",
-    "img/copas/images.jpeg"
+    "img/copas/bebeto-comemoracao1994-3-get.jpg-95.webp", // Foto 1: Romário e Bebeto embalando o bebê
+    "img/copas/RobertoPerderPenalti94.jpg", // Foto 2: Desespero de Roberto Baggio
+    "img/copas/BrasilCampeaoTaca94.jpg" // Foto 3: Dunga erguendo a taça do tetra
   ],
 
+  // Imagens da Copa de 1998 na França
+  1998: [
+    "img/copas/ZinedineGol98.jpg", // Foto 1: Zidane comemorando gol
+    "img/copas/FrancaCapeao98.jpg", // Foto 2: França campeã no Stade de France
+    "img/copas/DavorArtilheiro98.jpg" // Foto 3: Davor Šuker
+  ],
+
+  // Imagens da Copa de 2002 na Coreia do Sul e Japão
+  2002: [
+    "img/copas/RonaldoGol2002.webp", // Foto 1: Ronaldo comemorando gol na final
+    "img/copas/BrasilCampeaoTaca2002.jpg", // Foto 2: Cafu levantando a taça do penta
+    "img/copas/Ronaldinho2002.webp" // Foto 3: Ronaldinho Gaúcho em campo
+  ],
+
+  // Imagens da Copa de 2006 na Alemanha
+  2006: [
+    "img/copas/CabecadaZidane2002.jpg", // Foto 1: Cabeçada de Zidane em Materazzi
+    "img/copas/italiaComemorandoPenalti2002.jpg", // Foto 2: Itália campeã nos pênaltis
+    "img/copas/MiroslavKloseArt2002.webp" // Foto 3: Miroslav Klose
+  ],
+
+  // Imagens da Copa de 2010 na África do Sul
+  2010: [
+    "img/copas/AndresIniestaGol2010.jpg", // Foto 1: Gol de Iniesta na final
+    "img/copas/EspanhaTaca2010.jpg", // Foto 2: Espanha erguendo a taça
+    "img/copas/TorcedoresVuvuzelas2010.jpg" // Foto 3: Torcedores com vuvuzelas
+  ],
+
+  // Imagens da Copa de 2014 no Brasil
+  2014: [
+    "img/copas/GotzeComemorandoGol2014.webp", // Foto 1: Götze comemora gol do título
+    "img/copas/JamesRodriguez2014.jpg", // Foto 2: James Rodríguez
+    "img/copas/7x1_2014.jpg" // Foto 3: O placar histórico de Brasil 1 x 7 Alemanha
+  ],
+
+  // Imagens da Copa de 2018 na Rússia
+  2018: [
+    "img/copas/Mbappe2018.jpg", // Foto 1: Mbappé com a bola
+    "img/copas/francaTaca2018.jpg", // Foto 2: França com a taça sob chuva
+    "img/copas/LukaModricLederando2018.jpg" // Foto 3: Luka Modrić
+  ],
+
+  // Imagens da Copa de 2022 no Catar
   2022: [
-    "img/copas/entrando1930fotoinicio.jpg",
-    "img/copas/Uruguay_en_el_Mundial_1930,_Los_Sports,_1930-08-08_(387).jpg",
-    "img/copas/images.jpeg"
+    "img/copas/Messiraca2022.webp", // Foto 1: Messi erguendo a taça
+    "img/copas/FinalEpica2022.jpg", // Foto 2: Foto geral da final épica
+    "img/copas/MbappeComemorandoHat2022.jpg" // Foto 3: Mbappé comemorando hat-trick
   ]
 };
 
