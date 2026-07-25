@@ -58,4 +58,6 @@ O mascote Zico é um arquivo vetorial no formato SVG. Optamos por SVG porque ele
 
 A pulsação suave é controlada puramente por CSS usando uma animação @keyframes chamada pulsa, que altera a escala (scale) de 1.0x para 1.08x repetidamente. Usamos a regra animation-play-state: paused no hover para que, quando o usuário colocar o mouse sobre o mascote, a pulsação pare e o balão de fala (que fica oculto por padrão com display: none) apareça. Na página de detalhes, o texto que aparece dentro desse balão é preenchido de forma dinâmica pelo JavaScript a partir do atributo curiosidade de cada Copa."
 
-Onde olhar no código: No arquivo style.css, na seção /* ANIMAÇÃO DO MASCOTE... */ e no script.js na função definirCuriosidadeMascote().
+Onde olhar no código: No arquivo style.css, na seção /* ANIMAÇÃO DO MASCOTE... */ e no script.js na função definirCuriosidadeMascote(). 
+
+salvando...
