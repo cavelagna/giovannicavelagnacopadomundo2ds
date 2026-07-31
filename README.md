@@ -1,5 +1,5 @@
 # 1. O que é o Projeto?
-O CopaHistória é um portal interativo sobre as 22 edições das Copas do Mundo (de 1930 a 2022). Ele foi desenvolvido como uma Single Page Application (SPA), ou seja, um site de página única que simula a navegação de várias telas sem precisar recarregar o navegador.
+O CopaHistória é um portal interativo sobre as 22 edições das Copas do Mundo (de 1930 a 2026). Ele foi desenvolvido como uma Single Page Application (SPA), ou seja, um site de página única que simula a navegação de várias telas sem precisar recarregar o navegador.
 
 O projeto possui:
 
@@ -21,7 +21,7 @@ JavaScript (Lógica/Instalações Elétricas): É o cérebro. Define o comportam
 
 # 3. Recordando:
 
-Osite é 100% responsivo e se adapta a qualquer tamanho de tela (celulares, tablets e desktops). Desenvolvemos isso utilizando regras de layout modernas do CSS chamadas Flexbox e CSS Grid para posicionar os elementos de forma flexível.
+O site é 100% responsivo e se adapta a qualquer tamanho de tela (celulares, tablets e desktops). Desenvolvemos isso utilizando regras de layout modernas do CSS chamadas Flexbox e CSS Grid para posicionar os elementos de forma flexível.
 
 Além disso, usamos Media Queries (regras CSS que detectam a largura da tela). Quando a tela do usuário é menor que 768 pixels (celular), o CSS reorganiza a grade de cards de 3 colunas para 1 coluna empilhada, esconde o menu horizontal padrão do topo e exibe um menu lateral (gaveta) acionado pelo botão hambúrguer de três linhas."
 
