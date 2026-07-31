@@ -490,6 +490,7 @@ const detailsHero = document.getElementById("details-hero"); // Banner do topo d
 const btnVoltarHome = document.getElementById("btn-voltar-home"); // Botão de retorno superior
 const btnMobileToggle = document.getElementById("btn-mobile-toggle"); // Hamburguer mobile
 const navNavigation = document.getElementById("nav-navigation"); // Menu lateral gaveta mobile
+const headerLogo = document.getElementById("header-logo"); // Logotipo do cabeçalho
 
 /* Percorre o array de copas e cria os 22 cards na galeria principal */
 function gerarCardsGaleria() {
@@ -830,6 +831,14 @@ document.getElementById("btn-ir-quiz").addEventListener("click", (e) => {
 
 // Escuta cliques no botão de voltar superior para retornar à home
 btnVoltarHome.addEventListener("click", retornarParaHome);
+
+// Clique no logotipo também retorna à home e ao topo da página
+headerLogo.addEventListener("click", (e) => {
+  e.preventDefault();
+  retornarParaHome();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  atualizarMenuAtivo("nav-inicio");
+});
 
 // Alterna o estado aberto/fechado do menu móvel (hamburguer) no clique
 btnMobileToggle.addEventListener("click", () => {
