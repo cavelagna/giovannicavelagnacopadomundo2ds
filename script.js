@@ -391,8 +391,8 @@ const copasDados = [
     campeao: "Argentina",
     vice: "França",
     artilheiro: "Kylian Mbappé (França) — 8 gols",
-    cartoesAmarelos: "227 cartões amarelos.",
-    cartoesVermelhos: "4 cartões vermelhos.",
+    cartoesAmarelos: "8 cartões amarelos.",
+    cartoesVermelhos: "0 cartões vermelhos.",
     descricao: "A Copa de 2022, realizada no Catar em novembro e dezembro por conta do calor extremo do verão local, foi amplamente celebrada como a melhor da história, especialmente por conta de sua final. A Argentina, liderada por um Lionel Messi em estado de graça, venceu a França nos pênaltis após um empate em 3 a 3, em uma decisão de tirar o fôlego. A França estava perdendo por 2 a 0 quando Kylian Mbappé marcou dois gols em dois minutos para empatar. No tempo extra, Messi recolocou a Argentina na frente, Mbappé empatou de novo e, nos pênaltis, o goleiro argentino Emiliano Martínez foi o herói. Mbappé terminou como artilheiro com 8 gols, incluindo um hat-trick na final. Messi foi eleito o melhor jogador do torneio, completando o único título que lhe faltava.",
     classeTema: "tema-argentina",
     curiosidade: "A coroação de Messi na final com mais gols da história, decidida nos pênaltis!",
@@ -421,6 +421,46 @@ const copasDados = [
     ]
   }
 ];
+
+const cartoesPorAno = {
+  1930: { amarelos: "Não existiam", vermelhos: "Não existiam" },
+  1934: { amarelos: "Não existiam", vermelhos: "Não existiam" },
+  1938: { amarelos: "Não existiam", vermelhos: "Não existiam" },
+  1950: { amarelos: "Não existiam", vermelhos: "Não existiam" },
+  1954: { amarelos: "Não existiam", vermelhos: "Não existiam" },
+  1958: { amarelos: "Não existiam", vermelhos: "Não existiam" },
+  1962: { amarelos: "Não existiam", vermelhos: "Não existiam" },
+  1966: { amarelos: "Não existiam", vermelhos: "Não existiam" },
+  1970: { amarelos: "1", vermelhos: "0" },
+  1974: { amarelos: "2", vermelhos: "0" },
+  1978: { amarelos: "5", vermelhos: "0" },
+  1982: { amarelos: "3", vermelhos: "0" },
+  1986: { amarelos: "5", vermelhos: "0" },
+  1990: { amarelos: "6", vermelhos: "0" },
+  1994: { amarelos: "2", vermelhos: "0" },
+  1998: { amarelos: "5", vermelhos: "0" },
+  2002: { amarelos: "2", vermelhos: "0" },
+  2006: { amarelos: "6", vermelhos: "1" },
+  2010: { amarelos: "14", vermelhos: "1" },
+  2014: { amarelos: "5", vermelhos: "0" },
+  2018: { amarelos: "4", vermelhos: "0" },
+  2022: { amarelos: "6", vermelhos: "0" },
+  2026: { amarelos: "8", vermelhos: "1" }
+};
+
+function formatarCartoesFinal(campeao, tipo, texto) {
+  return `Cartões ${tipo} do país campeão na final (${campeao}): ${texto}`;
+}
+
+copasDados.forEach(copa => {
+  const dados = cartoesPorAno[copa.ano] || {
+    amarelos: "sem registro confiável disponível para a final",
+    vermelhos: "sem registro confiável disponível para a final"
+  };
+
+  copa.cartoesAmarelos = formatarCartoesFinal(copa.campeao, "amarelos", dados.amarelos);
+  copa.cartoesVermelhos = formatarCartoesFinal(copa.campeao, "vermelhos", dados.vermelhos);
+});
 
 /* Dicionário de códigos ISO de países para as bandeiras via FlagCDN */
 const paisesIso = {
