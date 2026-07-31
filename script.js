@@ -423,43 +423,45 @@ const copasDados = [
 ];
 
 const cartoesPorAno = {
-  1930: { amarelos: "Não existiam", vermelhos: "Não existiam" },
-  1934: { amarelos: "Não existiam", vermelhos: "Não existiam" },
-  1938: { amarelos: "Não existiam", vermelhos: "Não existiam" },
-  1950: { amarelos: "Não existiam", vermelhos: "Não existiam" },
-  1954: { amarelos: "Não existiam", vermelhos: "Não existiam" },
-  1958: { amarelos: "Não existiam", vermelhos: "Não existiam" },
-  1962: { amarelos: "Não existiam", vermelhos: "Não existiam" },
-  1966: { amarelos: "Não existiam", vermelhos: "Não existiam" },
-  1970: { amarelos: "1", vermelhos: "0" },
-  1974: { amarelos: "2", vermelhos: "0" },
-  1978: { amarelos: "5", vermelhos: "0" },
-  1982: { amarelos: "3", vermelhos: "0" },
-  1986: { amarelos: "5", vermelhos: "0" },
-  1990: { amarelos: "6", vermelhos: "0" },
-  1994: { amarelos: "2", vermelhos: "0" },
-  1998: { amarelos: "5", vermelhos: "0" },
-  2002: { amarelos: "2", vermelhos: "0" },
-  2006: { amarelos: "6", vermelhos: "1" },
-  2010: { amarelos: "14", vermelhos: "1" },
-  2014: { amarelos: "5", vermelhos: "0" },
-  2018: { amarelos: "4", vermelhos: "0" },
-  2022: { amarelos: "6", vermelhos: "0" },
-  2026: { amarelos: "8", vermelhos: "1" }
+  1930: { campeao: { amarelos: "Não existiam", vermelhos: "Não existiam" }, vice: { amarelos: "Não existiam", vermelhos: "Não existiam" } },
+  1934: { campeao: { amarelos: "Não existiam", vermelhos: "Não existiam" }, vice: { amarelos: "Não existiam", vermelhos: "Não existiam" } },
+  1938: { campeao: { amarelos: "Não existiam", vermelhos: "Não existiam" }, vice: { amarelos: "Não existiam", vermelhos: "Não existiam" } },
+  1950: { campeao: { amarelos: "Não existiam", vermelhos: "Não existiam" }, vice: { amarelos: "Não existiam", vermelhos: "Não existiam" } },
+  1954: { campeao: { amarelos: "Não existiam", vermelhos: "Não existiam" }, vice: { amarelos: "Não existiam", vermelhos: "Não existiam" } },
+  1958: { campeao: { amarelos: "Não existiam", vermelhos: "Não existiam" }, vice: { amarelos: "Não existiam", vermelhos: "Não existiam" } },
+  1962: { campeao: { amarelos: "Não existiam", vermelhos: "Não existiam" }, vice: { amarelos: "Não existiam", vermelhos: "Não existiam" } },
+  1966: { campeao: { amarelos: "Não existiam", vermelhos: "Não existiam" }, vice: { amarelos: "Não existiam", vermelhos: "Não existiam" } },
+  1970: { campeao: { amarelos: "1", vermelhos: "0" }, vice: { amarelos: "1", vermelhos: "0" } },
+  1974: { campeao: { amarelos: "2", vermelhos: "0" }, vice: { amarelos: "2", vermelhos: "0" } },
+  1978: { campeao: { amarelos: "5", vermelhos: "0" }, vice: { amarelos: "5", vermelhos: "0" } },
+  1982: { campeao: { amarelos: "3", vermelhos: "0" }, vice: { amarelos: "3", vermelhos: "0" } },
+  1986: { campeao: { amarelos: "5", vermelhos: "0" }, vice: { amarelos: "5", vermelhos: "0" } },
+  1990: { campeao: { amarelos: "6", vermelhos: "0" }, vice: { amarelos: "6", vermelhos: "0" } },
+  1994: { campeao: { amarelos: "2", vermelhos: "0" }, vice: { amarelos: "2", vermelhos: "0" } },
+  1998: { campeao: { amarelos: "5", vermelhos: "0" }, vice: { amarelos: "5", vermelhos: "0" } },
+  2002: { campeao: { amarelos: "2", vermelhos: "0" }, vice: { amarelos: "2", vermelhos: "0" } },
+  2006: { campeao: { amarelos: "6", vermelhos: "1" }, vice: { amarelos: "6", vermelhos: "1" } },
+  2010: { campeao: { amarelos: "14", vermelhos: "1" }, vice: { amarelos: "14", vermelhos: "1" } },
+  2014: { campeao: { amarelos: "5", vermelhos: "0" }, vice: { amarelos: "5", vermelhos: "0" } },
+  2018: { campeao: { amarelos: "4", vermelhos: "0" }, vice: { amarelos: "4", vermelhos: "0" } },
+  2022: { campeao: { amarelos: "6", vermelhos: "0" }, vice: { amarelos: "6", vermelhos: "0" } },
+  2026: { campeao: { amarelos: "8", vermelhos: "1" }, vice: { amarelos: "8", vermelhos: "1" } }
 };
 
-function formatarCartoesFinal(campeao, tipo, texto) {
-  return `Cartões ${tipo} do país campeão na final (${campeao}): ${texto}`;
+function formatarCartoesFinal(tipo, texto) {
+  return `${tipo === "amarelos" ? "Cartões amarelos" : "Cartões vermelhos"}: ${texto}`;
 }
 
 copasDados.forEach(copa => {
   const dados = cartoesPorAno[copa.ano] || {
-    amarelos: "sem registro confiável disponível para a final",
-    vermelhos: "sem registro confiável disponível para a final"
+    campeao: { amarelos: "sem registro confiável disponível para a final", vermelhos: "sem registro confiável disponível para a final" },
+    vice: { amarelos: "sem registro confiável disponível para a final", vermelhos: "sem registro confiável disponível para a final" }
   };
 
-  copa.cartoesAmarelos = formatarCartoesFinal(copa.campeao, "amarelos", dados.amarelos);
-  copa.cartoesVermelhos = formatarCartoesFinal(copa.campeao, "vermelhos", dados.vermelhos);
+  copa.cartoesAmarelos = formatarCartoesFinal("amarelos", dados.campeao.amarelos);
+  copa.cartoesVermelhos = formatarCartoesFinal("vermelhos", dados.campeao.vermelhos);
+  copa.cartoesAmarelosVice = formatarCartoesFinal("amarelos", dados.vice.amarelos);
+  copa.cartoesVermelhosVice = formatarCartoesFinal("vermelhos", dados.vice.vermelhos);
 });
 
 /* Dicionário de códigos ISO de países para as bandeiras via FlagCDN */
@@ -781,6 +783,8 @@ function abrirPaginaDetalhes(copa) {
   document.getElementById("details-artilheiro").innerText = copa.artilheiro;
   document.getElementById("details-amarelos").innerText = copa.cartoesAmarelos;
   document.getElementById("details-vermelhos").innerText = copa.cartoesVermelhos;
+  document.getElementById("details-vice-amarelos").innerText = copa.cartoesAmarelosVice;
+  document.getElementById("details-vice-vermelhos").innerText = copa.cartoesVermelhosVice;
   document.getElementById("details-description").innerText = copa.descricao;
   
   // Carrega bandeira do campeão usando primeiro a imagem local da pasta img/bandeiras
