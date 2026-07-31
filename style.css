@@ -1361,6 +1361,69 @@ img {
   color: var(--color-primary);
 }
 
+/* Cartão de placar final com bandeiras e gols */
+.details-final-score-card {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: 22px;
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--color-gray-border);
+}
+
+.details-final-score-card h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.final-score-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.score-team-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--color-gray-light);
+}
+
+.score-team-block img {
+  width: 44px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--color-gray-border);
+}
+
+.score-team-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.score-team-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-gray-dark);
+}
+
+.score-team-goals {
+  font-size: 0.9rem;
+  color: var(--color-gray-medium);
+}
+
+.score-vs {
+  font-weight: 800;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+}
+
 /* Cartão de estatísticas disciplinares no sidebar */
 .details-stats-card {
   background-color: var(--color-white);

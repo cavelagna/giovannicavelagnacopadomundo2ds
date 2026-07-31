@@ -448,6 +448,32 @@ const cartoesPorAno = {
   2026: { campeao: { amarelos: "8", vermelhos: "1" }, vice: { amarelos: "8", vermelhos: "1" } }
 };
 
+const placaresPorAno = {
+  1930: { campeao: 4, vice: 2 },
+  1934: { campeao: 2, vice: 1 },
+  1938: { campeao: 4, vice: 2 },
+  1950: { campeao: 2, vice: 1 },
+  1954: { campeao: 3, vice: 2 },
+  1958: { campeao: 5, vice: 2 },
+  1962: { campeao: 3, vice: 1 },
+  1966: { campeao: 4, vice: 2 },
+  1970: { campeao: 4, vice: 1 },
+  1974: { campeao: 2, vice: 1 },
+  1978: { campeao: 3, vice: 1 },
+  1982: { campeao: 3, vice: 1 },
+  1986: { campeao: 3, vice: 2 },
+  1990: { campeao: 1, vice: 0 },
+  1994: { campeao: 0, vice: 0 },
+  1998: { campeao: 3, vice: 0 },
+  2002: { campeao: 2, vice: 0 },
+  2006: { campeao: 1, vice: 1 },
+  2010: { campeao: 1, vice: 0 },
+  2014: { campeao: 1, vice: 0 },
+  2018: { campeao: 4, vice: 2 },
+  2022: { campeao: 3, vice: 3 },
+  2026: { campeao: 1, vice: 0 }
+};
+
 function formatarCartoesFinal(tipo, texto) {
   return `${tipo === "amarelos" ? "Cartões amarelos" : "Cartões vermelhos"}: ${texto}`;
 }
@@ -786,14 +812,25 @@ function abrirPaginaDetalhes(copa) {
   document.getElementById("details-vice-amarelos").innerText = copa.cartoesAmarelosVice;
   document.getElementById("details-vice-vermelhos").innerText = copa.cartoesVermelhosVice;
   document.getElementById("details-description").innerText = copa.descricao;
+
+  const placar = placaresPorAno[copa.ano];
+  const formatarGols = (valor) => `${valor} ${valor === 1 ? "gol" : "gols"}`;
+  document.getElementById("details-score-champ-name").innerText = copa.campeao;
+  document.getElementById("details-score-vice-name").innerText = copa.vice;
+  document.getElementById("details-score-champ-goals").innerText = placar ? formatarGols(placar.campeao) : "—";
+  document.getElementById("details-score-vice-goals").innerText = placar ? formatarGols(placar.vice) : "—";
   
   // Carrega bandeira do campeão usando primeiro a imagem local da pasta img/bandeiras
   const champFlagImg = document.getElementById("details-champ-flag");
   champFlagImg.src = obterFonteBandeira(copa.campeao);
+  const scoreChampFlagImg = document.getElementById("details-score-champ-flag");
+  scoreChampFlagImg.src = obterFonteBandeira(copa.campeao);
   
   // Carrega bandeira do vice usando primeiro a imagem local da pasta img/bandeiras
   const viceFlagImg = document.getElementById("details-vice-flag");
   viceFlagImg.src = obterFonteBandeira(copa.vice);
+  const scoreViceFlagImg = document.getElementById("details-score-vice-flag");
+  scoreViceFlagImg.src = obterFonteBandeira(copa.vice);
   
   // Mapeia os caminhos locais para as 3 fotos da galeria de detalhes
   const img1 = document.getElementById("details-img-1");
