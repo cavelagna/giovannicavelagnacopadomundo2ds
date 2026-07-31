@@ -854,6 +854,44 @@ img {
   width: 100%;
 }
 
+/* SEÇÃO DE CURIOSIDADES: cards com fatos e recordes */
+.curiosidades-section {
+  background-color: #F8FAFC;
+}
+
+.curiosidades-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.curiosidade-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-border);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.curiosidade-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.curiosidade-card h3 {
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.curiosidade-card p {
+  color: var(--color-gray-medium);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
 /* SEÇÃO DE QUIZ: 5 perguntas interativas sobre a Copa do Mundo */
 
 /* Pinta a seção do quiz com um tom cinza azulado suave */

@@ -411,7 +411,7 @@ const copasDados = [
     artilheiro: "Lamine Yamal (Espanha) — 5 gols",
     cartoesAmarelos: "0.",
     cartoesVermelhos: "0.",
-    descricao: "A Copa de 2026, disputada em uma edição histórica compartilhada entre Canadá, Estados Unidos e México, foi marcada pela campanha dominante da Espanha, que conquistou o título na final contra a Argentina. Em uma competição repleta de emoção, a seleção espanhola brilhou com uma campanha sólida e um futebol envolvente, enquanto o torneio bateu o recorde de público total de 6,8 milhões de espectadores. A edição também ficou marcada pela marca histórica de Lionel Messi ao alcançar 18 gols em Copas do Mundo. MessiCopa2026, EspanhaVencedora e artilheiroEspanha2026 se tornaram os grandes destaques desse capítulo especial da história.",
+    descricao: "A Copa do Mundo de 2026 entrou para a história como a primeira edição realizada de forma compartilhada entre Canadá, Estados Unidos e México, reunindo um público recorde de aproximadamente 6,8 milhões de espectadores ao longo da competição. Em meio a partidas marcadas por grande equilíbrio e emoção, a Espanha protagonizou uma campanha consistente e envolvente, conquistando o título mundial após superar a Argentina na grande final. O torneio também ficou marcado pelo desempenho de Lionel Messi, que alcançou a expressiva marca de 18 gols em Copas do Mundo, consolidando ainda mais seu legado na história da competição. Com grandes jogos, recordes e momentos inesquecíveis, a edição de 2026 tornou-se um dos capítulos mais memoráveis da trajetória da Copa do Mundo.",
     classeTema: "tema-espanha",
     curiosidade: "A Espanha conquistou o título em 2026 e deixou sua marca na história do futebol!",
     fotosLegendas: [
@@ -505,6 +505,9 @@ function gerarCardsGaleria() {
     const card = document.createElement("div");
     card.className = "copa-card"; // Classe CSS de formatação
     card.setAttribute("data-ano", copa.ano); // Facilita localização de teste
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.style.cursor = "pointer";
     
     // Insere o HTML interno do card contendo imagem, ano, sede, campeão e botão
     card.innerHTML = `
@@ -537,9 +540,22 @@ function gerarCardsGaleria() {
     
     copasGallery.appendChild(card); // Adiciona o card criado ao container da galeria
     
-    // Escuta evento de clique no botão para abrir os detalhes da edição
+    // Clique em qualquer parte do card abre os detalhes da edição
+    card.addEventListener("click", () => {
+      abrirPaginaDetalhes(copa); // Dispara transição para visualização de detalhes
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        abrirPaginaDetalhes(copa);
+      }
+    });
+
+    // Evita duplicidade ao clicar no botão dentro do card
     const btnDetalhe = card.querySelector(".btn-ver-detalhes");
-    btnDetalhe.addEventListener("click", () => {
+    btnDetalhe.addEventListener("click", (event) => {
+      event.stopPropagation();
       abrirPaginaDetalhes(copa); // Dispara transição para visualização de detalhes
     });
   });
@@ -868,6 +884,7 @@ window.addEventListener("scroll", () => {
   const galeriaSec = document.getElementById("galeria");
   const timelineSec = document.getElementById("timeline");
   const quizSec = document.getElementById("quiz");
+  const origemSec = document.getElementById("origem");
   const curiosidadesSec = document.getElementById("curiosidades");
   
   // Verifica em qual faixa de pixel de altura da tela o scroll está
@@ -877,10 +894,12 @@ window.addEventListener("scroll", () => {
     atualizarMenuAtivo("nav-copas"); // Galeria ativa
   } else if (scrollPos >= timelineSec.offsetTop - 100 && scrollPos < quizSec.offsetTop - 100) {
     atualizarMenuAtivo("nav-campeoes"); // Linha do tempo ativa
-  } else if (scrollPos >= quizSec.offsetTop - 100 && scrollPos < curiosidadesSec.offsetTop - 100) {
+  } else if (scrollPos >= quizSec.offsetTop - 100 && scrollPos < origemSec.offsetTop - 100) {
     atualizarMenuAtivo("nav-quiz-link"); // Quiz ativo
+  } else if (scrollPos >= origemSec.offsetTop - 100 && scrollPos < curiosidadesSec.offsetTop - 100) {
+    atualizarMenuAtivo("nav-origem"); // Origem ativa
   } else {
-    atualizarMenuAtivo("nav-curiosidades"); // Origem ativa
+    atualizarMenuAtivo("nav-curiosidades"); // Curiosidades ativa
   }
 });
 
