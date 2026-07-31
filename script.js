@@ -401,6 +401,24 @@ const copasDados = [
       "Final épica entre Argentina e França",
       "Mbappé comemorando hat-trick na final"
     ]
+  },
+  // 23. Dados estruturados da Copa do Mundo de 2026
+  {
+    ano: 2026,
+    sede: "Canadá, Estados Unidos e México",
+    campeao: "Espanha",
+    vice: "Argentina",
+    artilheiro: "Lamine Yamal (Espanha) — 5 gols",
+    cartoesAmarelos: "Dados em atualização.",
+    cartoesVermelhos: "Dados em atualização.",
+    descricao: "A Copa de 2026, disputada em uma edição histórica compartilhada entre Canadá, Estados Unidos e México, foi marcada pela campanha dominante da Espanha, que conquistou o título na final contra a Argentina. Em uma competição repleta de emoção, a seleção espanhola brilhou com uma campanha sólida e um futebol envolvente, enquanto o torneio bateu o recorde de público total de 6,8 milhões de espectadores. A edição também ficou marcada pela marca histórica de Lionel Messi ao alcançar 18 gols em Copas do Mundo. MessiCopa2026, EspanhaVencedora e artilheiroEspanha2026 se tornaram os grandes destaques desse capítulo especial da história.",
+    classeTema: "tema-espanha",
+    curiosidade: "A Espanha conquistou o título em 2026 e deixou sua marca na história do futebol!",
+    fotosLegendas: [
+      "Espanha comemorando o título em 2026",
+      "Final da Copa de 2026 contra a Argentina",
+      "Lamine Yamal como destaque da Espanha"
+    ]
   }
 ];
 
@@ -680,6 +698,13 @@ const imagensHistoricas = {
     "img/copas/Messiraca2022.webp", // Foto 1: Messi erguendo a taça
     "img/copas/FinalEpica2022.jpg", // Foto 2: Foto geral da final épica
     "img/copas/MbappeComemorandoHat2022.jpg" // Foto 3: Mbappé comemorando hat-trick
+  ],
+
+  // Imagens da Copa de 2026 no Canadá, EUA e México
+  2026: [
+    "img/copas/EspanhaVencedora.webp",
+    "img/copas/MessiCopa2026.jpeg",
+    "img/copas/artilheiroEspanha2026.webp"
   ]
 };
 
@@ -871,14 +896,14 @@ const quizPerguntas = [
     respostaCorreta: 2 // Índice correspondente a 'Copa do Mundo de 1970'
   },
   {
-    pergunta: "Qual país conquistou o primeiro título de Copa do Mundo de sua história no famoso 'Milagre de Berna' em 1954?",
-    opcoes: ["Alemanha Ocidental", "Hungria", "Itália", "Uruguai"],
-    respostaCorreta: 0 // Índice correspondente a 'Alemanha Ocidental'
+    pergunta: "Qual seleção conquistou o título da Copa de 2026 na final contra a Argentina?",
+    opcoes: ["Brasil", "Espanha", "França", "Alemanha"],
+    respostaCorreta: 1 // Índice correspondente a 'Espanha'
   },
   {
-    pergunta: "Na final histórica de 2022 no Catar, qual jogador francês marcou um hat-trick e levou a artilharia da edição?",
-    opcoes: ["Zinedine Zidane", "Antoine Griezmann", "Kylian Mbappé", "Karim Benzema"],
-    respostaCorreta: 2 // Índice correspondente a 'Kylian Mbappé'
+    pergunta: "Qual foi o recorde de público total registrado na Copa de 2026?",
+    opcoes: ["5,4 milhões", "6,8 milhões", "7,2 milhões", "8,1 milhões"],
+    respostaCorreta: 1 // Índice correspondente a '6,8 milhões'
   }
 ];
 
